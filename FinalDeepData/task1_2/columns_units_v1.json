@@ -1,0 +1,11 @@
+{
+  "temperature_2m": "°C",
+  "relative_humidity_2m": "%",
+  "surface_pressure": "hPa",
+  "wind_speed_10m": "km/h",
+  "wind_speed_100m": "km/h",
+  "precipitation": "mm",
+  "pm10": "μg/m³",
+  "pm2_5": "μg/m³",
+  "nitrogen_dioxide": "μg/m³"
+}

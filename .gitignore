@@ -1,0 +1,13 @@
+# macOS, Python, Jupyter
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Ảnh Task 3 (khoảng 450 MB): sinh lại bằng script, xem README
+FinalDeepData/task3/data/
+
+# Trọng số mô hình và file nén lớn: không đăng lên repo
+*.weights.h5
+checkpoints/
+*.zip
