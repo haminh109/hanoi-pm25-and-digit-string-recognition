@@ -17,8 +17,8 @@ FinalDeepData/
 │   ├── columns_units_v1.json          đơn vị từng cột
 │   ├── hanoi_hourly_2022_2026_v2.csv  bản mở rộng 08/2022–10/2026, 19 biến (có hướng gió)
 │   ├── columns_units_2022_2026_v2.json
-│   ├── download_2022_2026.py          tải lại bản mở rộng (gọi download_openmeteo.py, có sửa tham số)
-│   ├── download_openmeteo.py          script tải bản v2 của nhóm, xem lưu ý ở mục bản mở rộng
+│   ├── download_2022_2026.py          tải lại bản mở rộng (gọi download_openmeteo.py, chỉ đổi khoảng thời gian)
+│   ├── download_openmeteo.py          script tải của nhóm: ERA5, độ cao 19 m như v1 (sửa ngày 26/11/2026)
 │   └── original/                      nguyên trạng của nhóm
 │       ├── gop_csv.py
 │       ├── hanoi_weather_air_quality.csv
@@ -51,10 +51,27 @@ Tải lại (cần Internet, không cần API key):
 python FinalDeepData/task1_2/download_2022_2026.py
 ```
 
-**Lưu ý về `download_openmeteo.py`:** khi tải khí tượng, script này không chỉ định mô hình ERA5 và độ cao.
-- Thiếu `models=era5`, Open-Meteo trả về mô hình mặc định ở một điểm lưới khác (20,98 B; 105,79 Đ). Khi đó nhiệt độ lệch tới 8 °C và gió lệch tới 26 km/h so với v1, và script sẽ in "KHAC".
-- Thiếu `elevation=19`, nhiệt độ và áp suất còn lệch nhẹ.
-- `download_2022_2026.py` gọi lại chính script này nhưng thêm hai tham số trên, nên số liệu khớp với v1.
+**Cả nhóm dùng chung một bộ số liệu.** Ở những giờ trùng nhau, ba nguồn dưới đây giống nhau từng giá trị:
+- `hanoi_hourly_2023_2025_v1.csv`;
+- `hanoi_hourly_2022_2026_v2.csv`;
+- số liệu do `download_openmeteo.py` tải về.
+
+Nên đọc thẳng các file CSV này thay vì tự tải lại. Ai tự viết code tải riêng thì phải gửi đúng các tham số như `download_openmeteo.py`:
+- khí tượng (Historical Weather API): ô lưới 21,00°N 105,75°E, `models=era5`, `elevation=19`;
+- không khí (Air Quality API): ô lưới 21,00°N 105,90°E, dữ liệu CAMS Global;
+- giờ GMT+7 (`timezone=Asia/Bangkok`). Nếu lấy giờ UTC thì cộng 7 giờ trước khi ghép với các file trên.
+
+Tham số `elevation` quyết định cách API hiệu chỉnh áp suất và nhiệt độ theo độ cao. Nếu không ghi, API tự lấy độ cao theo toạ độ yêu cầu. Vì vậy đổi toạ độ là số liệu đổi theo, dù vẫn rơi vào cùng ô lưới.
+
+Ví dụ, yêu cầu tại 21,03°N 105,85°E (trung tâm Hà Nội) vẫn rơi vào hai ô lưới trên, nhưng API dùng độ cao 24 m:
+- áp suất thấp hơn khoảng 0,57 hPa ở mọi giờ;
+- độ ẩm lệch 1% ở 0,4% số giờ.
+
+Thêm `elevation=19` thì trùng hoàn toàn.
+
+**`download_openmeteo.py` đã sửa ngày 26/11/2026.** Bản trước không gửi `models=era5` và `elevation=19` khi tải khí tượng:
+- Thiếu `models=era5`, Open-Meteo trả về mô hình mặc định ở một ô lưới khác (20,98°N 105,79°E). Khi đó nhiệt độ lệch tới 8 °C và gió lệch tới 26 km/h so với v1.
+- Thiếu `elevation=19`, API dùng độ cao 13 m. Khi đó áp suất lệch khoảng 0,7 hPa, và nhiệt độ lệch 0,1 °C ở một số giờ.
 
 Hướng gió là góc 0–360°, nên đổi sang hai thành phần u, v (hoặc sin, cos) trước khi đưa vào mô hình, vì 359° và 1° thực ra rất gần nhau.
 
@@ -187,6 +204,9 @@ Không dùng `sklearn.metrics.r2_score` cho cột R²: hàm đó tính 1 − SSE
   - File gộp của nhóm khớp từng giá trị với hai file gốc.
   - Chuỗi liền mạch theo giờ, không trùng, không ô trống.
   - Số theo giờ không phải số nội suy (xem lưu ý ở trên).
+  - Script tải đã sửa (26/11/2026):
+    - `download_openmeteo.py` chạy mặc định cho 2023–2025 khớp từng giá trị với v1 ở 9 cột chung, và với bản mở rộng ở cả 19 biến;
+    - `download_2022_2026.py` tải lại ra đúng từng byte file mở rộng và 10 file gốc.
 - **Task 3 v1:**
   - Dựng lại 300 ảnh đầu của mỗi tập bằng script của nhóm với cùng seed: giống hệt cả nhãn lẫn từng pixel.
   - Nguồn train và validation không trùng nhau.

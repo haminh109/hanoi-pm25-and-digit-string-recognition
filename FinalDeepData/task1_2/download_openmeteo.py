@@ -2,7 +2,7 @@
 
 Bản v2 thêm các biến còn thiếu so với bản v1 của nhóm, quan trọng nhất là hướng gió
 (wind_direction_10m). Hai điểm lưới giữ đúng như v1 để số liệu khớp với bản cũ:
-  - khí tượng:           21.00 N, 105.75 E  (Historical Weather API)
+  - khí tượng:           21.00 N, 105.75 E  (Historical Weather API, mô hình ERA5, độ cao 19 m)
   - chất lượng không khí: 21.00 N, 105.90 E  (Air Quality API, dữ liệu CAMS)
 Giờ trả về theo GMT+7 (Asia/Bangkok, cùng múi giờ Việt Nam), từ 2023-01-01 00:00 đến 2025-12-31 23:00.
 
@@ -37,6 +37,12 @@ WEATHER = {
     "url": "https://archive-api.open-meteo.com/v1/archive",
     "latitude": 21.0,
     "longitude": 105.75,
+    # Cố định mô hình và độ cao như v1 (sửa ngày 26/11/2026):
+    #   - thiếu models=era5, API dùng mô hình mặc định ở ô lưới khác (20,98 N; 105,79 E):
+    #     nhiệt độ lệch tới 8 °C, gió lệch tới 26 km/h so với v1;
+    #   - thiếu elevation=19, API tự lấy độ cao theo toạ độ yêu cầu (13 m ở toạ độ này):
+    #     áp suất lệch khoảng 0,7 hPa, nhiệt độ lệch 0,1 °C ở một số giờ.
+    "extra_params": {"models": "era5", "elevation": 19},
     "hourly": [
         "temperature_2m", "relative_humidity_2m", "dew_point_2m", "precipitation",
         "surface_pressure", "cloud_cover", "wind_speed_10m", "wind_speed_100m",
@@ -75,6 +81,7 @@ def fetch(source, year):
         "timezone": TIMEZONE,
         "format": "csv",
     }
+    params.update(source.get("extra_params", {}))
     url = source["url"] + "?" + urllib.parse.urlencode(params, safe=",")
     req = urllib.request.Request(url, headers={"User-Agent": "deep-learning-course-project"})
     for attempt in range(4):

@@ -97,6 +97,7 @@ Notebook `05_task3_model.ipynb` có thêm phân tích lỗi và bản đồ atte
 
 - **Task 1–2:** dùng ngay file `FinalDeepData/task1_2/hanoi_hourly_2023_2025_v1.csv`. File có 26.304 giờ, không thiếu giờ nào và có sẵn cột chia train/validation/test theo thời gian. `FinalDeepData/README.md` mô tả từng cột, cách cắt cửa sổ trượt và mốc dự báo persistence cần vượt qua.
   - Bản mở rộng `hanoi_hourly_2022_2026_v2.csv` (08/2022–10/2026, 19 biến, có hướng gió) dùng cho phần nâng cấp của Task 1. Tải lại bằng `python FinalDeepData/task1_2/download_2022_2026.py`. Ở những giờ trùng nhau, các cột chung khớp hoàn toàn với bản 2023–2025.
+  - Cả nhóm nên đọc thẳng các file CSV này thay vì tự tải lại. Nếu tự tải, cần gửi đúng các tham số ghi trong `FinalDeepData/README.md` (mục bản mở rộng). Phần khí tượng đặc biệt cần `models=era5` và `elevation=19`.
 - **Task 3:** bộ ảnh không có trong repo. Sinh lại bộ chính v3 bằng một lệnh, khoảng 20 giây:
 
   ```bash
