@@ -1,0 +1,13 @@
+so sánh,chỉ số,chênh lệch,khoảng tin cậy 95%,khác 0 rõ ràng?
+Học sâu nâng cấp so với LSTM + Attention (gốc),RMSE,-2.1469966600558212,-2.698 đến -1.606,có
+Học sâu nâng cấp so với LSTM + Attention (gốc),NSE,0.04253640521326807,+0.033 đến +0.053,có
+Học sâu nâng cấp so với Hồi quy tuyến tính nâng cấp,RMSE,-2.2641094997076845,-2.684 đến -1.837,có
+Học sâu nâng cấp so với Hồi quy tuyến tính nâng cấp,NSE,0.04511376129692668,+0.037 đến +0.054,có
+Học sâu nâng cấp so với Hồi quy tuyến tính (gốc),RMSE,-1.4784835783017662,-1.774 đến -1.175,có
+Học sâu nâng cấp so với Hồi quy tuyến tính (gốc),NSE,0.028333395604075218,+0.022 đến +0.035,có
+Hồi quy tuyến tính nâng cấp so với Hồi quy tuyến tính (gốc),RMSE,0.7856259214059182,+0.499 đến +1.088,có
+Hồi quy tuyến tính nâng cấp so với Hồi quy tuyến tính (gốc),NSE,-0.016780365692851462,-0.023 đến -0.011,có
+Gộp học sâu và tuyến tính (w = 0.75) so với Hồi quy tuyến tính nâng cấp,RMSE,-2.1727599283667534,-2.499 đến -1.838,có
+Gộp học sâu và tuyến tính (w = 0.75) so với Hồi quy tuyến tính nâng cấp,NSE,0.04348602361117737,+0.037 đến +0.051,có
+Gộp học sâu và tuyến tính (w = 0.75) so với Học sâu nâng cấp,RMSE,0.09134957134093113,-0.009 đến +0.189,chưa chắc
+Gộp học sâu và tuyến tính (w = 0.75) so với Học sâu nâng cấp,NSE,-0.0016277376857493087,-0.003 đến +0.000,chưa chắc

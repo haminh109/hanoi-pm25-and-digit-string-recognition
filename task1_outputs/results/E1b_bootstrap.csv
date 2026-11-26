@@ -1,0 +1,13 @@
+so sánh,chỉ số,chênh lệch,khoảng tin cậy 95%,khác 0 rõ ràng?
+LSTM + Attention học phần thay đổi so với LSTM + Attention,RMSE,0.2600854054976516,-0.345 đến +0.890,chưa chắc
+LSTM + Attention học phần thay đổi so với LSTM + Attention,MAE,0.09665304158242005,-0.241 đến +0.438,chưa chắc
+LSTM + Attention học phần thay đổi so với LSTM + Attention,NSE,-0.00575987581576165,-0.021 đến +0.008,chưa chắc
+LSTM + Attention học phần thay đổi so với Hồi quy tuyến tính,RMSE,0.9285984872517066,+0.430 đến +1.471,có
+LSTM + Attention học phần thay đổi so với Hồi quy tuyến tính,MAE,0.47832105178387785,+0.178 đến +0.780,có
+LSTM + Attention học phần thay đổi so với Hồi quy tuyến tính,NSE,-0.019962885424954502,-0.032 đến -0.009,có
+GRU học phần thay đổi so với GRU,RMSE,-0.2592989315755929,-0.492 đến -0.033,có
+GRU học phần thay đổi so với GRU,MAE,-0.1330629277762121,-0.288 đến +0.004,chưa chắc
+GRU học phần thay đổi so với GRU,NSE,0.005546430380576339,+0.001 đến +0.010,có
+GRU học phần thay đổi so với Hồi quy tuyến tính,RMSE,0.2790814810870206,-0.073 đến +0.644,chưa chắc
+GRU học phần thay đổi so với Hồi quy tuyến tính,MAE,0.16597108484843925,-0.053 đến +0.384,chưa chắc
+GRU học phần thay đổi so với Hồi quy tuyến tính,NSE,-0.005823888214451678,-0.013 đến +0.002,chưa chắc

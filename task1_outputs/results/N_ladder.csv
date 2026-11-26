@@ -1,0 +1,8 @@
+bậc,RMSE validation,RMSE test
+"Gốc: LSTM + Attention, F15, seed 42",10.170991172370925,11.289508046206775
+"N1: GRU + Attention học phần thay đổi, F15, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1",9.20112764772817,10.668053033080618
+"N6: mở rộng, train 08/2022–2024",9.003058478300389,10.281688560415175
+"N5: GRU + Attention học phần thay đổi, F15, cửa sổ 24 giờ, 128 unit, 2 lớp, bộ ext",8.737170686074274,9.706583867526222
+N2: hiệu chỉnh sai lệch,8.697090390142009,9.636932658512444
+N3: gộp 3 seed,8.549412114379269,9.472199811165574
+N4: huấn luyện lại trên train + validation,,9.142511386150954

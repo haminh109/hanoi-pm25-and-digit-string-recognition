@@ -1,0 +1,1430 @@
+{
+  "E1_test": {
+    "Giữ nguyên (persistence)": {
+      "số tham số": 0,
+      "số epoch (tốt nhất)": "–",
+      "RMSE validation": 13.768069743981476,
+      "R2": 0.7791790784117204,
+      "NSE": 0.7654096205331827,
+      "MAE": 10.021286231884059,
+      "RMSE": 15.554141213092146
+    },
+    "Cùng giờ hôm trước": {
+      "số tham số": 0,
+      "số epoch (tốt nhất)": "–",
+      "RMSE validation": 31.20656362465545,
+      "R2": 0.2859567257027,
+      "NSE": 0.06914660674129502,
+      "MAE": 21.159171195652174,
+      "RMSE": 30.98357891836545
+    },
+    "Hồi quy tuyến tính": {
+      "số tham số": 721,
+      "số epoch (tốt nhất)": "42 (32)",
+      "RMSE validation": 9.93933551032831,
+      "R2": 0.8918566554342939,
+      "NSE": 0.8906173278767906,
+      "MAE": 6.985160938517914,
+      "RMSE": 10.62099496445272
+    },
+    "RNN": {
+      "số tham số": 5185,
+      "số epoch (tốt nhất)": "32 (22)",
+      "RMSE validation": 10.674916811786966,
+      "R2": 0.887510176351054,
+      "NSE": 0.8718111522379879,
+      "MAE": 7.514132973952191,
+      "RMSE": 11.49783469716824
+    },
+    "GRU": {
+      "số tham số": 15617,
+      "số epoch (tốt nhất)": "27 (17)",
+      "RMSE validation": 9.664977223999495,
+      "R2": 0.899161842376335,
+      "NSE": 0.8792470092817626,
+      "MAE": 7.284194951142565,
+      "RMSE": 11.159375377115333
+    },
+    "LSTM": {
+      "số tham số": 20545,
+      "số epoch (tốt nhất)": "27 (17)",
+      "RMSE validation": 10.323976630139667,
+      "R2": 0.904042931945982,
+      "NSE": 0.8764309897278426,
+      "MAE": 7.508246531865265,
+      "RMSE": 11.288746554544709
+    },
+    "LSTM 2 lớp": {
+      "số tham số": 53569,
+      "số epoch (tốt nhất)": "22 (12)",
+      "RMSE validation": 10.202021191393548,
+      "R2": 0.8898477742363219,
+      "NSE": 0.866870561028739,
+      "MAE": 7.661459590330951,
+      "RMSE": 11.717311875718075
+    },
+    "LSTM + Attention": {
+      "số tham số": 28929,
+      "số epoch (tốt nhất)": "25 (15)",
+      "RMSE validation": 10.170991172370925,
+      "R2": 0.9002095160979843,
+      "NSE": 0.8764143182675977,
+      "MAE": 7.366828948719371,
+      "RMSE": 11.289508046206775
+    }
+  },
+  "attention": {
+    "3 giờ gần nhất (t-2..t)": 0.1013495922088623,
+    "6 giờ gần nhất": 0.17627009749412537,
+    "quanh cùng giờ hôm trước (t-25..t-19)": 0.154398575425148,
+    "giờ có trọng số lớn nhất (độ trễ)": 0
+  },
+  "seeds": {
+    "R2 / mean": {
+      "LSTM": 0.9029,
+      "LSTM + Attention": 0.8967
+    },
+    "R2 / std": {
+      "LSTM": 0.001,
+      "LSTM + Attention": 0.0065
+    },
+    "NSE / mean": {
+      "LSTM": 0.878,
+      "LSTM + Attention": 0.8765
+    },
+    "NSE / std": {
+      "LSTM": 0.0128,
+      "LSTM + Attention": 0.0022
+    },
+    "MAE / mean": {
+      "LSTM": 7.4538,
+      "LSTM + Attention": 7.2968
+    },
+    "MAE / std": {
+      "LSTM": 0.3935,
+      "LSTM + Attention": 0.0607
+    },
+    "RMSE / mean": {
+      "LSTM": 11.2071,
+      "LSTM + Attention": 11.2834
+    },
+    "RMSE / std": {
+      "LSTM": 0.593,
+      "LSTM + Attention": 0.0984
+    }
+  },
+  "bias_test_main": -3.9750844122983664,
+  "error_by_level": {
+    "dưới 25": {
+      "so_mau": 991,
+      "sai_lech_trung_binh": 0.5509,
+      "MAE": 2.5786,
+      "MAE_persistence": 3.992
+    },
+    "25–50": {
+      "so_mau": 1674,
+      "sai_lech_trung_binh": -0.9477,
+      "MAE": 4.9177,
+      "MAE_persistence": 8.2456
+    },
+    "50–75": {
+      "so_mau": 901,
+      "sai_lech_trung_binh": -5.0267,
+      "MAE": 8.4997,
+      "MAE_persistence": 12.7105
+    },
+    "trên 75": {
+      "so_mau": 850,
+      "sai_lech_trung_binh": -14.0994,
+      "MAE": 16.5719,
+      "MAE_persistence": 17.6971
+    }
+  },
+  "bootstrap": {
+    "LSTM + Attention so với Giữ nguyên (persistence) / RMSE": {
+      "chênh lệch": -4.264633166885371,
+      "khoảng tin cậy 95%": "-4.957 đến -3.568",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention so với Giữ nguyên (persistence) / MAE": {
+      "chênh lệch": -2.654457283164687,
+      "khoảng tin cậy 95%": "-3.095 đến -2.231",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention so với Giữ nguyên (persistence) / NSE": {
+      "chênh lệch": 0.11100469773441501,
+      "khoảng tin cậy 95%": "+0.091 đến +0.133",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention so với Hồi quy tuyến tính / RMSE": {
+      "chênh lệch": 0.668513081754055,
+      "khoảng tin cậy 95%": "+0.053 đến +1.270",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention so với Hồi quy tuyến tính / MAE": {
+      "chênh lệch": 0.3816680102014578,
+      "khoảng tin cậy 95%": "+0.064 đến +0.706",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention so với Hồi quy tuyến tính / NSE": {
+      "chênh lệch": -0.014203009609192851,
+      "khoảng tin cậy 95%": "-0.027 đến -0.001",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention so với LSTM / RMSE": {
+      "chênh lệch": 0.0007614916620664047,
+      "khoảng tin cậy 95%": "-0.369 đến +0.360",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention so với LSTM / MAE": {
+      "chênh lệch": -0.14141758314589392,
+      "khoảng tin cậy 95%": "-0.334 đến +0.048",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention so với LSTM / NSE": {
+      "chênh lệch": -1.6671460244865877e-05,
+      "khoảng tin cậy 95%": "-0.008 đến +0.008",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention so với GRU / RMSE": {
+      "chênh lệch": 0.1301326690914415,
+      "khoảng tin cậy 95%": "-0.258 đến +0.522",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention so với GRU / MAE": {
+      "chênh lệch": 0.08263399757680645,
+      "khoảng tin cậy 95%": "-0.134 đến +0.298",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention so với GRU / NSE": {
+      "chênh lệch": -0.0028326910141648343,
+      "khoảng tin cậy 95%": "-0.011 đến +0.006",
+      "khác 0 rõ ràng?": "chưa chắc"
+    }
+  },
+  "E2_lookback": {
+    "24": {
+      "RMSE validation": 10.181602546562308,
+      "NSE validation": 0.8982546415535211,
+      "R2 test": 0.8991746249639628,
+      "NSE test": 0.8829283075083468,
+      "MAE test": 7.177362409526956,
+      "RMSE test": 10.98795537849163
+    },
+    "48": {
+      "RMSE validation": 10.170991172370925,
+      "NSE validation": 0.8984666112214057,
+      "R2 test": 0.9002095160979843,
+      "NSE test": 0.8764143182675977,
+      "MAE test": 7.366828948719371,
+      "RMSE test": 11.289508046206775
+    },
+    "72": {
+      "RMSE validation": 10.351917841123246,
+      "NSE validation": 0.8948222297210916,
+      "R2 test": 0.8989335379901894,
+      "NSE test": 0.8846799604790915,
+      "MAE test": 7.1458745215217245,
+      "RMSE test": 10.905443446005194
+    }
+  },
+  "E3_features": {
+    "đầy đủ (15)": {
+      "RMSE validation": 10.170991172370925,
+      "R2 test": 0.9002095160979843,
+      "NSE test": 0.8764143182675977,
+      "MAE test": 7.366828948719371,
+      "RMSE test": 11.289508046206775
+    },
+    "bỏ khí tượng (9)": {
+      "RMSE validation": 9.92526581325507,
+      "R2 test": 0.8898436398154311,
+      "NSE test": 0.878468149141232,
+      "MAE test": 7.225049445233104,
+      "RMSE test": 11.195306671186636
+    },
+    "chỉ PM2.5 + thời gian (7)": {
+      "RMSE validation": 9.598893514123363,
+      "R2 test": 0.8969712025049609,
+      "NSE test": 0.8969334524623085,
+      "MAE test": 6.761183375237357,
+      "RMSE test": 10.309789612433507
+    }
+  },
+  "units": {
+    "32": {
+      "số tham số": 8321,
+      "RMSE validation": 10.103236388993025,
+      "R2 test": 0.8921289363984227,
+      "NSE test": 0.8567297799360765,
+      "MAE test": 7.8292639807275695,
+      "RMSE test": 12.155390142172253
+    },
+    "64": {
+      "số tham số": 28929,
+      "RMSE validation": 10.170991172370925,
+      "R2 test": 0.9002095160979843,
+      "NSE test": 0.8764143182675977,
+      "MAE test": 7.366828948719371,
+      "RMSE test": 11.289508046206775
+    },
+    "128": {
+      "số tham số": 107009,
+      "RMSE validation": 10.253801858553366,
+      "R2 test": 0.8791658865432874,
+      "NSE test": 0.8573688470093377,
+      "MAE test": 7.86154775770662,
+      "RMSE test": 12.128249849076859
+    }
+  },
+  "E1b_residual": [
+    {
+      "mô hình": "LSTM + Attention (học phần thay đổi)",
+      "seed": 42,
+      "RMSE validation": 9.545584522749325,
+      "R2 test": 0.8729364724826026,
+      "NSE test": 0.8706544424518361,
+      "MAE test": 7.4634819903017915,
+      "RMSE test": 11.549593451704427
+    },
+    {
+      "mô hình": "LSTM + Attention (học phần thay đổi)",
+      "seed": 43,
+      "RMSE validation": 9.662493906376707,
+      "R2 test": 0.8800578071706966,
+      "NSE test": 0.8638847490066233,
+      "MAE test": 7.752836505003491,
+      "RMSE test": 11.847980556383312
+    },
+    {
+      "mô hình": "LSTM + Attention (học phần thay đổi)",
+      "seed": 44,
+      "RMSE validation": 9.52965031797538,
+      "R2 test": 0.8762765101889503,
+      "NSE test": 0.8628255159564278,
+      "MAE test": 7.762994546948132,
+      "RMSE test": 11.893991021092539
+    },
+    {
+      "mô hình": "GRU (học phần thay đổi)",
+      "seed": 42,
+      "RMSE validation": 9.273370199857487,
+      "R2 test": 0.8951038725209937,
+      "NSE test": 0.8847934396623389,
+      "MAE test": 7.151132023366353,
+      "RMSE test": 10.90007644553974
+    },
+    {
+      "mô hình": "LSTM (học phần thay đổi)",
+      "seed": 42,
+      "RMSE validation": 9.906407771950498,
+      "R2 test": 0.8741269564167092,
+      "NSE test": 0.8643248065791564,
+      "MAE test": 7.690880347898794,
+      "RMSE test": 11.828812923181717
+    }
+  ],
+  "E1b_compare_3_seeds": {
+    "LSTM + Attention (3 seed)": {
+      "R2": 0.8966528705154122,
+      "NSE": 0.8765406600706852,
+      "MAE": 7.296832872714039,
+      "RMSE": 11.283449891545745
+    },
+    "LSTM + Attention học phần thay đổi (3 seed)": {
+      "R2": 0.8764235966140831,
+      "NSE": 0.8657882358049624,
+      "MAE": 7.659771014084472,
+      "RMSE": 11.76385500972676
+    },
+    "Hồi quy tuyến tính": {
+      "R2": 0.8918566554342939,
+      "NSE": 0.8906173278767906,
+      "MAE": 6.985160938517914,
+      "RMSE": 10.62099496445272
+    }
+  },
+  "E1b_bootstrap": {
+    "LSTM + Attention học phần thay đổi so với LSTM + Attention / RMSE": {
+      "chênh lệch": 0.2600854054976516,
+      "khoảng tin cậy 95%": "-0.345 đến +0.890",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention học phần thay đổi so với LSTM + Attention / MAE": {
+      "chênh lệch": 0.09665304158242005,
+      "khoảng tin cậy 95%": "-0.241 đến +0.438",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention học phần thay đổi so với LSTM + Attention / NSE": {
+      "chênh lệch": -0.00575987581576165,
+      "khoảng tin cậy 95%": "-0.021 đến +0.008",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "LSTM + Attention học phần thay đổi so với Hồi quy tuyến tính / RMSE": {
+      "chênh lệch": 0.9285984872517066,
+      "khoảng tin cậy 95%": "+0.430 đến +1.471",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention học phần thay đổi so với Hồi quy tuyến tính / MAE": {
+      "chênh lệch": 0.47832105178387785,
+      "khoảng tin cậy 95%": "+0.178 đến +0.780",
+      "khác 0 rõ ràng?": "có"
+    },
+    "LSTM + Attention học phần thay đổi so với Hồi quy tuyến tính / NSE": {
+      "chênh lệch": -0.019962885424954502,
+      "khoảng tin cậy 95%": "-0.032 đến -0.009",
+      "khác 0 rõ ràng?": "có"
+    },
+    "GRU học phần thay đổi so với GRU / RMSE": {
+      "chênh lệch": -0.2592989315755929,
+      "khoảng tin cậy 95%": "-0.492 đến -0.033",
+      "khác 0 rõ ràng?": "có"
+    },
+    "GRU học phần thay đổi so với GRU / MAE": {
+      "chênh lệch": -0.1330629277762121,
+      "khoảng tin cậy 95%": "-0.288 đến +0.004",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "GRU học phần thay đổi so với GRU / NSE": {
+      "chênh lệch": 0.005546430380576339,
+      "khoảng tin cậy 95%": "+0.001 đến +0.010",
+      "khác 0 rõ ràng?": "có"
+    },
+    "GRU học phần thay đổi so với Hồi quy tuyến tính / RMSE": {
+      "chênh lệch": 0.2790814810870206,
+      "khoảng tin cậy 95%": "-0.073 đến +0.644",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "GRU học phần thay đổi so với Hồi quy tuyến tính / MAE": {
+      "chênh lệch": 0.16597108484843925,
+      "khoảng tin cậy 95%": "-0.053 đến +0.384",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "GRU học phần thay đổi so với Hồi quy tuyến tính / NSE": {
+      "chênh lệch": -0.005823888214451678,
+      "khoảng tin cậy 95%": "-0.013 đến +0.002",
+      "khác 0 rõ ràng?": "chưa chắc"
+    }
+  },
+  "N_choice": {
+    "N1": "GRU + Attention học phần thay đổi, F15, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1",
+    "N6": "mở rộng, train 08/2022–2024",
+    "N5": "GRU + Attention học phần thay đổi, F15, cửa sổ 24 giờ, 128 unit, 2 lớp, bộ ext",
+    "linear": "Hồi quy tuyến tính, F15+X, cửa sổ 24 giờ, bộ ext",
+    "smear_dl": true,
+    "smear_linear": true,
+    "w": 0.75,
+    "smear_blend": true
+  },
+  "N1": [
+    {
+      "kiến trúc": "GRU + Attention",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F15",
+      "RMSE validation": 9.058526287518525
+    },
+    {
+      "kiến trúc": "GRU + Attention",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F9",
+      "RMSE validation": 9.222063120724709
+    },
+    {
+      "kiến trúc": "GRU",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F9",
+      "RMSE validation": 9.244894817721335
+    },
+    {
+      "kiến trúc": "GRU",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F15",
+      "RMSE validation": 9.273370199857487
+    },
+    {
+      "kiến trúc": "GRU",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F9",
+      "RMSE validation": 9.456216352436325
+    },
+    {
+      "kiến trúc": "GRU + Attention",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F7",
+      "RMSE validation": 9.488059066204983
+    },
+    {
+      "kiến trúc": "LSTM + Attention",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F15",
+      "RMSE validation": 9.545584522749325
+    },
+    {
+      "kiến trúc": "LSTM + Attention",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F9",
+      "RMSE validation": 9.577795869380449
+    },
+    {
+      "kiến trúc": "GRU + Attention",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F15",
+      "RMSE validation": 9.596606145168549
+    },
+    {
+      "kiến trúc": "LSTM + Attention",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F7",
+      "RMSE validation": 9.598893514123363
+    },
+    {
+      "kiến trúc": "GRU + Attention",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F7",
+      "RMSE validation": 9.624377478732569
+    },
+    {
+      "kiến trúc": "GRU + Attention",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F9",
+      "RMSE validation": 9.646413713628657
+    },
+    {
+      "kiến trúc": "GRU",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F15",
+      "RMSE validation": 9.664977223999495
+    },
+    {
+      "kiến trúc": "LSTM + Attention",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F7",
+      "RMSE validation": 9.684879969069781
+    },
+    {
+      "kiến trúc": "GRU",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F7",
+      "RMSE validation": 9.757278995566018
+    },
+    {
+      "kiến trúc": "LSTM + Attention",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F9",
+      "RMSE validation": 9.92526581325507
+    },
+    {
+      "kiến trúc": "GRU",
+      "học phần thay đổi": "có",
+      "đặc trưng": "F7",
+      "RMSE validation": 9.92895253081347
+    },
+    {
+      "kiến trúc": "LSTM + Attention",
+      "học phần thay đổi": "không",
+      "đặc trưng": "F15",
+      "RMSE validation": 10.170991172370925
+    }
+  ],
+  "N1_seeds": {
+    "GRU + Attention học phần thay đổi, F15, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1": {
+      "RMSE validation TB": 9.20112764772817,
+      "độ lệch chuẩn": 0.14096586975876477
+    },
+    "GRU + Attention học phần thay đổi, F9, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1": {
+      "RMSE validation TB": 9.25960346696623,
+      "độ lệch chuẩn": 0.03653331429738896
+    }
+  },
+  "N6": {
+    "v1, train 2023–2024": {
+      "số đặc trưng": 15,
+      "số mẫu train": 17495,
+      "RMSE validation TB": 9.20112764772817,
+      "độ lệch chuẩn": 0.14096586975876477
+    },
+    "mở rộng, train 08/2022–2024": {
+      "số đặc trưng": 15,
+      "số mẫu train": 21088,
+      "RMSE validation TB": 9.003058478300389,
+      "độ lệch chuẩn": 0.07889467484810118
+    },
+    "mở rộng + 10 biến mới": {
+      "số đặc trưng": 25,
+      "số mẫu train": 21088,
+      "RMSE validation TB": 9.807302059304766,
+      "độ lệch chuẩn": 0.15925646177547964
+    }
+  },
+  "N5": [
+    {
+      "cửa sổ": 24,
+      "unit": 128,
+      "số lớp": 2,
+      "RMSE validation": 8.700176721482972
+    },
+    {
+      "cửa sổ": 48,
+      "unit": 128,
+      "số lớp": 2,
+      "RMSE validation": 8.701904022030718
+    },
+    {
+      "cửa sổ": 72,
+      "unit": 32,
+      "số lớp": 2,
+      "RMSE validation": 8.77981486765377
+    },
+    {
+      "cửa sổ": 72,
+      "unit": 128,
+      "số lớp": 2,
+      "RMSE validation": 8.781619803928969
+    },
+    {
+      "cửa sổ": 48,
+      "unit": 64,
+      "số lớp": 2,
+      "RMSE validation": 8.809669726321848
+    },
+    {
+      "cửa sổ": 72,
+      "unit": 32,
+      "số lớp": 1,
+      "RMSE validation": 8.829860609274522
+    },
+    {
+      "cửa sổ": 72,
+      "unit": 128,
+      "số lớp": 1,
+      "RMSE validation": 8.834088318595487
+    },
+    {
+      "cửa sổ": 72,
+      "unit": 64,
+      "số lớp": 1,
+      "RMSE validation": 8.845169854262155
+    },
+    {
+      "cửa sổ": 24,
+      "unit": 128,
+      "số lớp": 1,
+      "RMSE validation": 8.861873238382348
+    },
+    {
+      "cửa sổ": 72,
+      "unit": 64,
+      "số lớp": 2,
+      "RMSE validation": 8.886787627689957
+    },
+    {
+      "cửa sổ": 24,
+      "unit": 32,
+      "số lớp": 2,
+      "RMSE validation": 8.94141766077706
+    },
+    {
+      "cửa sổ": 24,
+      "unit": 64,
+      "số lớp": 2,
+      "RMSE validation": 8.96513273693094
+    },
+    {
+      "cửa sổ": 48,
+      "unit": 32,
+      "số lớp": 2,
+      "RMSE validation": 8.969753449645454
+    },
+    {
+      "cửa sổ": 24,
+      "unit": 64,
+      "số lớp": 1,
+      "RMSE validation": 8.98579874912213
+    },
+    {
+      "cửa sổ": 48,
+      "unit": 64,
+      "số lớp": 1,
+      "RMSE validation": 9.022944179935877
+    },
+    {
+      "cửa sổ": 48,
+      "unit": 128,
+      "số lớp": 1,
+      "RMSE validation": 9.025881708603391
+    },
+    {
+      "cửa sổ": 24,
+      "unit": 32,
+      "số lớp": 1,
+      "RMSE validation": 9.04570180411672
+    },
+    {
+      "cửa sổ": 48,
+      "unit": 32,
+      "số lớp": 1,
+      "RMSE validation": 9.156936628499048
+    }
+  ],
+  "N5_seeds": {
+    "cửa sổ 24 giờ, 128 unit, 2 lớp": {
+      "RMSE validation TB": 8.737170686074274,
+      "độ lệch chuẩn": 0.13416479233384265
+    },
+    "cửa sổ 48 giờ, 128 unit, 2 lớp": {
+      "RMSE validation TB": 8.809158567188147,
+      "độ lệch chuẩn": 0.10928281049977977
+    },
+    "cửa sổ 72 giờ, 32 unit, 2 lớp": {
+      "RMSE validation TB": 8.914884505639101,
+      "độ lệch chuẩn": 0.13734783719190347
+    }
+  },
+  "N_linear": [
+    {
+      "dữ liệu": "ext",
+      "đặc trưng": "F15+X",
+      "cửa sổ": 24,
+      "RMSE validation": 9.806668721061753
+    },
+    {
+      "dữ liệu": "v1",
+      "đặc trưng": "F15",
+      "cửa sổ": 24,
+      "RMSE validation": 9.875308783297843
+    },
+    {
+      "dữ liệu": "v1",
+      "đặc trưng": "F15",
+      "cửa sổ": 48,
+      "RMSE validation": 9.93933551032831
+    },
+    {
+      "dữ liệu": "ext",
+      "đặc trưng": "F15",
+      "cửa sổ": 48,
+      "RMSE validation": 10.060936072210385
+    },
+    {
+      "dữ liệu": "ext",
+      "đặc trưng": "F7+X",
+      "cửa sổ": 24,
+      "RMSE validation": 10.124873554483594
+    },
+    {
+      "dữ liệu": "ext",
+      "đặc trưng": "F9+X",
+      "cửa sổ": 24,
+      "RMSE validation": 10.215646230595588
+    },
+    {
+      "dữ liệu": "ext",
+      "đặc trưng": "F9",
+      "cửa sổ": 48,
+      "RMSE validation": 10.28229411376249
+    },
+    {
+      "dữ liệu": "v1",
+      "đặc trưng": "F9",
+      "cửa sổ": 48,
+      "RMSE validation": 10.315054827224209
+    },
+    {
+      "dữ liệu": "v1",
+      "đặc trưng": "F9",
+      "cửa sổ": 72,
+      "RMSE validation": 10.345350391373488
+    },
+    {
+      "dữ liệu": "ext",
+      "đặc trưng": "F15+X",
+      "cửa sổ": 48,
+      "RMSE validation": 10.36204483221677
+    }
+  ],
+  "N2": {
+    "Học sâu (TB 3 seed) / không": {
+      "R2": 0.9261216676825607,
+      "NSE": 0.9250637025470961,
+      "MAE": 5.849274995675551,
+      "RMSE": 8.737170686074274,
+      "sai lệch TB": -0.7940890045324595,
+      "hệ số k": 1.0
+    },
+    "Học sâu (TB 3 seed) / có": {
+      "R2": 0.9261216676825607,
+      "NSE": 0.9257511819421461,
+      "MAE": 5.810004543426153,
+      "RMSE": 8.697090390142009,
+      "sai lệch TB": -0.4922349258173691,
+      "hệ số k": 1.0056162470598267
+    },
+    "Hồi quy tuyến tính / không": {
+      "R2": 0.908361015597462,
+      "NSE": 0.9056101412940144,
+      "MAE": 6.677696798240256,
+      "RMSE": 9.806668721061753,
+      "sai lệch TB": -1.1307608162403557,
+      "hệ số k": 1.0
+    },
+    "Hồi quy tuyến tính / có": {
+      "R2": 0.908361015597462,
+      "NSE": 0.907780599159318,
+      "MAE": 6.626155038063661,
+      "RMSE": 9.693262743195483,
+      "sai lệch TB": -0.21588652967012117,
+      "hệ số k": 1.0170103333095513
+    }
+  },
+  "N3": {
+    "w=0.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.908361015597462,
+      "NSE": 0.9056101412940144,
+      "MAE": 6.677696798240256,
+      "RMSE": 9.806668721061753
+    },
+    "w=0.0 / có": {
+      "hệ số k": 1.0170103333095513,
+      "R2": 0.908361015597462,
+      "NSE": 0.907780599159318,
+      "MAE": 6.626155038063661,
+      "RMSE": 9.693262743195483
+    },
+    "w=0.25 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9204319202104806,
+      "NSE": 0.9176923965622215,
+      "MAE": 6.20572327880041,
+      "RMSE": 9.157539800849404
+    },
+    "w=0.25 / có": {
+      "hệ số k": 1.0131584355046046,
+      "R2": 0.9204319202104805,
+      "NSE": 0.919535802599529,
+      "MAE": 6.136765705908874,
+      "RMSE": 9.054410464458192
+    },
+    "w=0.5 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9277248582441716,
+      "NSE": 0.925469274697839,
+      "MAE": 5.882549692980338,
+      "RMSE": 8.714179678900987
+    },
+    "w=0.5 / có": {
+      "hệ số k": 1.0099158728000184,
+      "R2": 0.9277248582441716,
+      "NSE": 0.9268289838787633,
+      "MAE": 5.81740510987596,
+      "RMSE": 8.634324762073062
+    },
+    "w=0.75 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9303589046772369,
+      "NSE": 0.9288861742062047,
+      "MAE": 5.711534237916995,
+      "RMSE": 8.512083170675615
+    },
+    "w=0.75 / có": {
+      "hệ số k": 1.0072689684668614,
+      "R2": 0.9303589046772367,
+      "NSE": 0.9297485677101944,
+      "MAE": 5.665536192156068,
+      "RMSE": 8.460312953065255
+    },
+    "w=1.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9285563960454336,
+      "NSE": 0.9278213224003671,
+      "MAE": 5.721429511311293,
+      "RMSE": 8.575575940540546
+    },
+    "w=1.0 / có": {
+      "hệ số k": 1.0052110410313333,
+      "R2": 0.9285563960454336,
+      "NSE": 0.9282610805117706,
+      "MAE": 5.691753403584167,
+      "RMSE": 8.549412114379269
+    }
+  },
+  "N_final": {
+    "Giữ nguyên (persistence)": {
+      "R2 test": 0.7791790784117204,
+      "NSE test": 0.7654096205331827,
+      "MAE test": 10.021286231884059,
+      "RMSE test": 15.554141213092146,
+      "sai lệch TB test": 0.013858695652173911,
+      "NSE 2026": 0.7547101872997348,
+      "MAE 2026": 9.065254934210527,
+      "RMSE 2026": 14.871175379976444
+    },
+    "Hồi quy tuyến tính (gốc)": {
+      "R2 test": 0.8918566554342939,
+      "NSE test": 0.8906173278767906,
+      "MAE test": 6.985160938517914,
+      "RMSE test": 10.62099496445272,
+      "sai lệch TB test": -1.0737585279761206,
+      "NSE 2026": 0.8735233936578081,
+      "MAE 2026": 6.809482115047718,
+      "RMSE 2026": 10.678509579594534
+    },
+    "LSTM + Attention (gốc)": {
+      "R2 test": 0.9002095160979843,
+      "NSE test": 0.8764143182675977,
+      "MAE test": 7.366828948719371,
+      "RMSE test": 11.289508046206775,
+      "sai lệch TB test": -3.9750844122983664,
+      "NSE 2026": 0.8645531584920316,
+      "MAE 2026": 7.114755945253638,
+      "RMSE 2026": 11.050704877122365
+    },
+    "Hồi quy tuyến tính nâng cấp": {
+      "R2 test": 0.8752830322765098,
+      "NSE test": 0.8738369621839391,
+      "MAE test": 7.898992217571316,
+      "RMSE test": 11.406620885858638,
+      "sai lệch TB test": -1.211732379694418,
+      "NSE 2026": 0.8471695270915686,
+      "MAE 2026": 7.773257211357773,
+      "RMSE 2026": 11.73844361254243
+    },
+    "Học sâu nâng cấp": {
+      "R2 test": 0.9194720533580831,
+      "NSE test": 0.9189507234808658,
+      "MAE test": 5.908889652566634,
+      "RMSE test": 9.142511386150954,
+      "sai lệch TB test": -0.6991109685641987,
+      "NSE 2026": 0.900512097627517,
+      "MAE 2026": 5.848508184440673,
+      "RMSE 2026": 9.470887474611311
+    },
+    "Gộp học sâu và tuyến tính (w = 0.75)": {
+      "R2 test": 0.9185621789476325,
+      "NSE test": 0.9173229857951165,
+      "MAE test": 6.042399099293159,
+      "RMSE test": 9.233860957491885,
+      "sai lệch TB test": -0.9869602086671649,
+      "NSE 2026": 0.9019981138828008,
+      "MAE 2026": 5.8730654335789625,
+      "RMSE 2026": 9.399889680861918
+    }
+  },
+  "N_bootstrap": {
+    "Học sâu nâng cấp so với LSTM + Attention (gốc) / RMSE": {
+      "chênh lệch": -2.1469966600558212,
+      "khoảng tin cậy 95%": "-2.698 đến -1.606",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Học sâu nâng cấp so với LSTM + Attention (gốc) / NSE": {
+      "chênh lệch": 0.04253640521326807,
+      "khoảng tin cậy 95%": "+0.033 đến +0.053",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Học sâu nâng cấp so với Hồi quy tuyến tính nâng cấp / RMSE": {
+      "chênh lệch": -2.2641094997076845,
+      "khoảng tin cậy 95%": "-2.684 đến -1.837",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Học sâu nâng cấp so với Hồi quy tuyến tính nâng cấp / NSE": {
+      "chênh lệch": 0.04511376129692668,
+      "khoảng tin cậy 95%": "+0.037 đến +0.054",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Học sâu nâng cấp so với Hồi quy tuyến tính (gốc) / RMSE": {
+      "chênh lệch": -1.4784835783017662,
+      "khoảng tin cậy 95%": "-1.774 đến -1.175",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Học sâu nâng cấp so với Hồi quy tuyến tính (gốc) / NSE": {
+      "chênh lệch": 0.028333395604075218,
+      "khoảng tin cậy 95%": "+0.022 đến +0.035",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Hồi quy tuyến tính nâng cấp so với Hồi quy tuyến tính (gốc) / RMSE": {
+      "chênh lệch": 0.7856259214059182,
+      "khoảng tin cậy 95%": "+0.499 đến +1.088",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Hồi quy tuyến tính nâng cấp so với Hồi quy tuyến tính (gốc) / NSE": {
+      "chênh lệch": -0.016780365692851462,
+      "khoảng tin cậy 95%": "-0.023 đến -0.011",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Gộp học sâu và tuyến tính (w = 0.75) so với Hồi quy tuyến tính nâng cấp / RMSE": {
+      "chênh lệch": -2.1727599283667534,
+      "khoảng tin cậy 95%": "-2.499 đến -1.838",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Gộp học sâu và tuyến tính (w = 0.75) so với Hồi quy tuyến tính nâng cấp / NSE": {
+      "chênh lệch": 0.04348602361117737,
+      "khoảng tin cậy 95%": "+0.037 đến +0.051",
+      "khác 0 rõ ràng?": "có"
+    },
+    "Gộp học sâu và tuyến tính (w = 0.75) so với Học sâu nâng cấp / RMSE": {
+      "chênh lệch": 0.09134957134093113,
+      "khoảng tin cậy 95%": "-0.009 đến +0.189",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "Gộp học sâu và tuyến tính (w = 0.75) so với Học sâu nâng cấp / NSE": {
+      "chênh lệch": -0.0016277376857493087,
+      "khoảng tin cậy 95%": "-0.003 đến +0.000",
+      "khác 0 rõ ràng?": "chưa chắc"
+    }
+  },
+  "N_ladder": {
+    "Gốc: LSTM + Attention, F15, seed 42": {
+      "RMSE validation": 10.170991172370925,
+      "RMSE test": 11.289508046206775
+    },
+    "N1: GRU + Attention học phần thay đổi, F15, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1": {
+      "RMSE validation": 9.20112764772817,
+      "RMSE test": 10.668053033080618
+    },
+    "N6: mở rộng, train 08/2022–2024": {
+      "RMSE validation": 9.003058478300389,
+      "RMSE test": 10.281688560415175
+    },
+    "N5: GRU + Attention học phần thay đổi, F15, cửa sổ 24 giờ, 128 unit, 2 lớp, bộ ext": {
+      "RMSE validation": 8.737170686074274,
+      "RMSE test": 9.706583867526222
+    },
+    "N2: hiệu chỉnh sai lệch": {
+      "RMSE validation": 8.697090390142009,
+      "RMSE test": 9.636932658512444
+    },
+    "N3: gộp 3 seed": {
+      "RMSE validation": 8.549412114379269,
+      "RMSE test": 9.472199811165574
+    },
+    "N4: huấn luyện lại trên train + validation": {
+      "RMSE validation": NaN,
+      "RMSE test": 9.142511386150954
+    }
+  },
+  "N_peaks": {
+    "Hồi quy tuyến tính (gốc)": {
+      "độ dốc đường khớp": 0.9022600554756544,
+      "sai lệch khi PM2.5 > 75": -6.59856506652383,
+      "MAE khi PM2.5 > 75": 13.0052570891169,
+      "MAE khi PM2.5 ≤ 75": 5.550196909351021
+    },
+    "LSTM + Attention (gốc)": {
+      "độ dốc đường khớp": 0.8128722377813264,
+      "sai lệch khi PM2.5 > 75": -14.099382656654232,
+      "MAE khi PM2.5 > 75": 16.571864399285282,
+      "MAE khi PM2.5 ≤ 75": 5.172695428534003
+    },
+    "Học sâu nâng cấp": {
+      "độ dốc đường khớp": 0.9128700293192257,
+      "sai lệch khi PM2.5 > 75": -5.335049258715673,
+      "MAE khi PM2.5 > 75": 11.226754497391271,
+      "MAE khi PM2.5 ≤ 75": 4.641311100098618
+    }
+  },
+  "N7_N9": {
+    "cấu hình cuối vòng 1": {
+      "RMSE validation TB": 8.737170686074274,
+      "độ lệch chuẩn": 0.13416479233384265,
+      "sai lệch khi PM2.5 > 75": -5.199568330927143
+    },
+    "N7a: giảm tốc độ học khi chững": {
+      "RMSE validation TB": 8.737170686074274,
+      "độ lệch chuẩn": 0.13416479233384265,
+      "sai lệch khi PM2.5 > 75": -5.199568330927143
+    },
+    "N7b: tốc độ học 0,0003": {
+      "RMSE validation TB": 8.870404232220208,
+      "độ lệch chuẩn": 0.027938270839342992,
+      "sai lệch khi PM2.5 > 75": -5.2436083905518425
+    },
+    "N7c: dropout 0,3": {
+      "RMSE validation TB": 8.752300232010283,
+      "độ lệch chuẩn": 0.10142820744031242,
+      "sai lệch khi PM2.5 > 75": -5.198275651861319
+    },
+    "N8: BiGRU": {
+      "RMSE validation TB": 8.761318660519086,
+      "độ lệch chuẩn": 0.12067932483502986,
+      "sai lệch khi PM2.5 > 75": -4.059429387997831
+    },
+    "N9: trọng số cho giờ ô nhiễm cao": {
+      "RMSE validation TB": 8.683569395853715,
+      "độ lệch chuẩn": 0.1009777472764894,
+      "sai lệch khi PM2.5 > 75": -4.724531493914637
+    }
+  },
+  "N10": {
+    "3 seed / 0.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.908361015597462,
+      "NSE": 0.9056101412940144,
+      "MAE": 6.677696798240256,
+      "RMSE": 9.806668721061753
+    },
+    "3 seed / 0.0 / có": {
+      "hệ số k": 1.0170103333095513,
+      "R2": 0.908361015597462,
+      "NSE": 0.907780599159318,
+      "MAE": 6.626155038063661,
+      "RMSE": 9.693262743195483
+    },
+    "3 seed / 0.25 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9216017880047471,
+      "NSE": 0.9189481792662786,
+      "MAE": 6.159867920897669,
+      "RMSE": 9.087412124792335
+    },
+    "3 seed / 0.25 / có": {
+      "hệ số k": 1.0110148002306,
+      "R2": 0.9216017880047471,
+      "NSE": 0.9205188828113819,
+      "MAE": 6.09984506935549,
+      "RMSE": 8.998928850927157
+    },
+    "3 seed / 0.5 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9295312638963731,
+      "NSE": 0.9274839877960829,
+      "MAE": 5.804935846149143,
+      "RMSE": 8.595592006863688
+    },
+    "3 seed / 0.5 / có": {
+      "hệ số k": 1.006142581895047,
+      "R2": 0.9295312638963731,
+      "NSE": 0.928336815085286,
+      "MAE": 5.76427915385361,
+      "RMSE": 8.544898127672493
+    },
+    "3 seed / 0.75 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9322359997171019,
+      "NSE": 0.9310975254667339,
+      "MAE": 5.628382871868266,
+      "RMSE": 8.378692389660724
+    },
+    "3 seed / 0.75 / có": {
+      "hệ số k": 1.0022161137806684,
+      "R2": 0.9322359997171017,
+      "NSE": 0.931356194515002,
+      "MAE": 5.613825905680523,
+      "RMSE": 8.362950238751719
+    },
+    "3 seed / 1.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9299339869340184,
+      "NSE": 0.9295838881908085,
+      "MAE": 5.669455826098719,
+      "RMSE": 8.470223247360911
+    },
+    "3 seed / 1.0 / có": {
+      "hệ số k": 0.9991232448757594,
+      "R2": 0.9299339869340182,
+      "NSE": 0.9295170829212631,
+      "MAE": 5.67427990566068,
+      "RMSE": 8.47424023570654
+    },
+    "5 seed / 0.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.908361015597462,
+      "NSE": 0.9056101412940144,
+      "MAE": 6.677696798240256,
+      "RMSE": 9.806668721061753
+    },
+    "5 seed / 0.0 / có": {
+      "hệ số k": 1.0170103333095513,
+      "R2": 0.908361015597462,
+      "NSE": 0.907780599159318,
+      "MAE": 6.626155038063661,
+      "RMSE": 9.693262743195483
+    },
+    "5 seed / 0.25 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9216569248970421,
+      "NSE": 0.9191286763278034,
+      "MAE": 6.150737700211806,
+      "RMSE": 9.077287951321807
+    },
+    "5 seed / 0.25 / có": {
+      "hệ số k": 1.0104418318677013,
+      "R2": 0.9216569248970423,
+      "NSE": 0.9205832004000241,
+      "MAE": 6.095262118765372,
+      "RMSE": 8.995287064275804
+    },
+    "5 seed / 0.5 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9298312379837551,
+      "NSE": 0.9279837285709513,
+      "MAE": 5.780571249864306,
+      "RMSE": 8.565922738191537
+    },
+    "5 seed / 0.5 / có": {
+      "hệ số k": 1.0051188553859656,
+      "R2": 0.9298312379837549,
+      "NSE": 0.9286607577958376,
+      "MAE": 5.747041428129798,
+      "RMSE": 8.525563285788103
+    },
+    "5 seed / 0.75 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9329591328945431,
+      "NSE": 0.9320324622823241,
+      "MAE": 5.582854070818224,
+      "RMSE": 8.321653051134074
+    },
+    "5 seed / 0.75 / có": {
+      "hệ số k": 1.0007899562735822,
+      "R2": 0.9329591328945436,
+      "NSE": 0.9321170702208746,
+      "MAE": 5.578277299693515,
+      "RMSE": 8.316471922140625
+    },
+    "5 seed / 1.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9312410303517593,
+      "NSE": 0.9310542128755162,
+      "MAE": 5.6023298633521605,
+      "RMSE": 8.381325429097606
+    },
+    "5 seed / 1.0 / có": {
+      "hệ số k": 0.9973022571628017,
+      "R2": 0.9312410303517594,
+      "NSE": 0.9308818748335319,
+      "MAE": 5.613014832186326,
+      "RMSE": 8.391793941934898
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.908361015597462,
+      "NSE": 0.9056101412940144,
+      "MAE": 6.677696798240256,
+      "RMSE": 9.806668721061753
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.0 / có": {
+      "hệ số k": 1.0170103333095513,
+      "R2": 0.908361015597462,
+      "NSE": 0.907780599159318,
+      "MAE": 6.626155038063661,
+      "RMSE": 9.693262743195483
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.25 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9218230129129042,
+      "NSE": 0.9191826753607288,
+      "MAE": 6.150684488217485,
+      "RMSE": 9.074256922530187
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.25 / có": {
+      "hệ số k": 1.0106705555778936,
+      "R2": 0.9218230129129042,
+      "NSE": 0.9207025615102163,
+      "MAE": 6.091355391965082,
+      "RMSE": 8.988524696681608
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.5 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.930117419331164,
+      "NSE": 0.9280793934063711,
+      "MAE": 5.777958525520689,
+      "RMSE": 8.560231455576
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.5 / có": {
+      "hệ số k": 1.0055308711189066,
+      "R2": 0.930117419331164,
+      "NSE": 0.9288461741904264,
+      "MAE": 5.742349800021183,
+      "RMSE": 8.514476767083323
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.75 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.933304631624671,
+      "NSE": 0.932173065299376,
+      "MAE": 5.57683670452902,
+      "RMSE": 8.313041180628835
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 0.75 / có": {
+      "hệ số k": 1.0013635956060136,
+      "R2": 0.9333046316246709,
+      "NSE": 0.9323322872227325,
+      "MAE": 5.568422364097793,
+      "RMSE": 8.30327812621398
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 1.0 / không": {
+      "hệ số k": 1.0,
+      "R2": 0.9315725311167121,
+      "NSE": 0.9312560436987057,
+      "MAE": 5.593106907556518,
+      "RMSE": 8.369048757129672
+    },
+    "5 seed + GRU học phần thay đổi (3 seed) / 1.0 / có": {
+      "hệ số k": 0.9980280815478015,
+      "R2": 0.9315725311167123,
+      "NSE": 0.931104457090129,
+      "MAE": 5.602477513586812,
+      "RMSE": 8.378270928738436
+    }
+  },
+  "N_round2_final": {
+    "Hồi quy tuyến tính (gốc)": {
+      "R2 test": 0.8918566554342939,
+      "NSE test": 0.8906173278767906,
+      "MAE test": 6.985160938517914,
+      "RMSE test": 10.62099496445272,
+      "sai lệch khi PM2.5 > 75": -6.59856506652383,
+      "NSE 2026": 0.8735233936578081,
+      "RMSE 2026": 10.678509579594534
+    },
+    "Học sâu nâng cấp vòng 1": {
+      "R2 test": 0.9194720533580831,
+      "NSE test": 0.9189507234808658,
+      "MAE test": 5.908889652566634,
+      "RMSE test": 9.142511386150954,
+      "sai lệch khi PM2.5 > 75": -5.335049258715673,
+      "NSE 2026": 0.900512097627517,
+      "RMSE 2026": 9.470887474611311
+    },
+    "Học sâu nâng cấp vòng 2": {
+      "R2 test": 0.9214345471422565,
+      "NSE test": 0.9207948594023173,
+      "MAE test": 5.889239501288404,
+      "RMSE test": 9.03790190380631,
+      "sai lệch khi PM2.5 > 75": -5.781510697728825,
+      "NSE 2026": 0.9039232730248706,
+      "RMSE 2026": 9.307105555200032
+    },
+    "Trộn vòng 2 (w = 0.75)": {
+      "R2 test": 0.9204678748209414,
+      "NSE test": 0.9187199834097235,
+      "MAE test": 6.02174954390658,
+      "RMSE test": 9.155516094711178,
+      "sai lệch khi PM2.5 > 75": -6.88838853564645,
+      "NSE 2026": 0.9054420374646687,
+      "RMSE 2026": 9.233249953298133
+    }
+  },
+  "N_round2_bootstrap": {
+    "Học sâu nâng cấp vòng 2 so với Học sâu nâng cấp vòng 1": {
+      "chênh lệch RMSE": -0.10460948234464418,
+      "khoảng tin cậy 95%": "-0.220 đến +0.011",
+      "khác 0 rõ ràng?": "chưa chắc"
+    },
+    "Học sâu nâng cấp vòng 2 so với Hồi quy tuyến tính (gốc)": {
+      "chênh lệch RMSE": -1.5830930606464104,
+      "khoảng tin cậy 95%": "-1.922 đến -1.231",
+      "khác 0 rõ ràng?": "có"
+    }
+  },
+  "N_error_by_hour": {
+    "0": {
+      "mô hình": 8.557899575379452,
+      "giữ nguyên": 12.051718261039719
+    },
+    "1": {
+      "mô hình": 8.484576033939089,
+      "giữ nguyên": 12.11252495847027
+    },
+    "2": {
+      "mô hình": 8.944371867684916,
+      "giữ nguyên": 12.296641464414087
+    },
+    "3": {
+      "mô hình": 7.5323399371328685,
+      "giữ nguyên": 12.13521420960683
+    },
+    "4": {
+      "mô hình": 6.300940955551045,
+      "giữ nguyên": 11.06290314912666
+    },
+    "5": {
+      "mô hình": 6.574088683384669,
+      "giữ nguyên": 10.386027403073387
+    },
+    "6": {
+      "mô hình": 8.989452592234862,
+      "giữ nguyên": 11.074029548216972
+    },
+    "7": {
+      "mô hình": 13.057273095282305,
+      "giữ nguyên": 15.639679191639171
+    },
+    "8": {
+      "mô hình": 12.035267511644824,
+      "giữ nguyên": 22.546924498650057
+    },
+    "9": {
+      "mô hình": 10.36454725442174,
+      "giữ nguyên": 25.552601331031028
+    },
+    "10": {
+      "mô hình": 7.425013997714851,
+      "giữ nguyên": 20.02523543801236
+    },
+    "11": {
+      "mô hình": 6.178920734949257,
+      "giữ nguyên": 12.603868453772437
+    },
+    "12": {
+      "mô hình": 4.5546642618697595,
+      "giữ nguyên": 7.56142599272639
+    },
+    "13": {
+      "mô hình": 3.9302588016254814,
+      "giữ nguyên": 5.105064620806351
+    },
+    "14": {
+      "mô hình": 3.6397255402994473,
+      "giữ nguyên": 4.49147138668291
+    },
+    "15": {
+      "mô hình": 3.2524902223442025,
+      "giữ nguyên": 4.208376739624043
+    },
+    "16": {
+      "mô hình": 2.929456767605676,
+      "giữ nguyên": 3.8558326794836306
+    },
+    "17": {
+      "mô hình": 6.024531073483707,
+      "giữ nguyên": 11.774041085296963
+    },
+    "18": {
+      "mô hình": 8.840434562055451,
+      "giữ nguyên": 25.031773287424993
+    },
+    "19": {
+      "mô hình": 13.220817871371247,
+      "giữ nguyên": 28.529480366806542
+    },
+    "20": {
+      "mô hình": 16.36383764342916,
+      "giữ nguyên": 24.41240997668123
+    },
+    "21": {
+      "mô hình": 12.630005290546427,
+      "giữ nguyên": 15.405841283492892
+    },
+    "22": {
+      "mô hình": 10.690440813282315,
+      "giữ nguyên": 13.575543467382166
+    },
+    "23": {
+      "mô hình": 9.961125390827325,
+      "giữ nguyên": 12.826825236673878
+    }
+  },
+  "N_round2_choice": {
+    "helpful": [
+      "N9: trọng số cho giờ ô nhiễm cao"
+    ],
+    "best": "N9: trọng số cho giờ ô nhiễm cao",
+    "ensemble": "5 seed + GRU học phần thay đổi (3 seed)",
+    "smear": false,
+    "mix": [
+      "5 seed + GRU học phần thay đổi (3 seed)",
+      0.75,
+      true
+    ]
+  }
+}

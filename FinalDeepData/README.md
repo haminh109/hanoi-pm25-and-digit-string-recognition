@@ -1,8 +1,8 @@
 # FinalDeepData: bộ dữ liệu hoàn chỉnh cho đề tài 4
 
-Dự báo PM2.5 Hà Nội (Task 1–2) và đọc chuỗi chữ số viết tay (Task 3). Đóng gói ngày 22/11/2026.
+Dự báo PM2.5 Hà Nội (Task 1–2) và đọc chuỗi chữ số viết tay (Task 3). Đóng gói ngày 22/11/2026; thêm bộ Task 3 v3 ngày 25/11/2026; thêm bộ Task 1–2 mở rộng ngày 26/11/2026.
 
-Gói gồm bộ dữ liệu gốc của nhóm (giữ nguyên), bản đã làm sạch dùng ngay cho Task 1–2, bộ ảnh Task 3 v2 khó hơn, script tải số liệu đủ biến, và hai file code dùng chung (đọc dữ liệu, tính chỉ số).
+Gói gồm bộ dữ liệu gốc của nhóm (giữ nguyên), bản đã làm sạch dùng ngay cho Task 1–2, bộ ảnh Task 3 v3 (mỗi chuỗi do một người viết, bộ chính), script tải số liệu đủ biến, và hai file code dùng chung (đọc dữ liệu, tính chỉ số).
 
 ## Cấu trúc thư mục
 
@@ -15,7 +15,10 @@ FinalDeepData/
 ├── task1_2/
 │   ├── hanoi_hourly_2023_2025_v1.csv  DÙNG NGAY cho Task 1–2
 │   ├── columns_units_v1.json          đơn vị từng cột
-│   ├── download_openmeteo.py          tải bản v2 đủ biến (có hướng gió), xem mục "Việc còn lại"
+│   ├── hanoi_hourly_2022_2026_v2.csv  bản mở rộng 08/2022–10/2026, 19 biến (có hướng gió)
+│   ├── columns_units_2022_2026_v2.json
+│   ├── download_2022_2026.py          tải lại bản mở rộng (gọi download_openmeteo.py, có sửa tham số)
+│   ├── download_openmeteo.py          script tải bản v2 của nhóm, xem lưu ý ở mục bản mở rộng
 │   └── original/                      nguyên trạng của nhóm
 │       ├── gop_csv.py
 │       ├── hanoi_weather_air_quality.csv
@@ -23,36 +26,37 @@ FinalDeepData/
 └── task3/
     ├── generate_data.py, check_data.py   nguyên trạng của nhóm (sinh bản v1)
     ├── generate_data_v2.py               sinh bản v2
+    ├── generate_data_v3.py               sinh bản v3: mỗi chuỗi do một người viết (BỘ CHÍNH)
+    ├── check_writers.py                  đếm số người viết trong từng ảnh của v1, v2, v3
     └── data/
-        ├── raw/mnist.npz
+        ├── raw/                          mnist.npz + 2 file nhãn mở rộng của QMNIST (mã người viết)
         ├── mnist_sequences_v1/           20.000 / 2.000 / 2.000 ảnh, bản của nhóm, giữ nguyên
-        └── mnist_sequences_v2/           20.000 / 2.000 / 2.000 ảnh, bản mới khó hơn
+        ├── mnist_sequences_v2/           20.000 / 2.000 / 2.000 ảnh, bản khó hơn (chỉ để so sánh)
+        └── mnist_sequences_v3/           20.000 / 2.000 / 2.000 ảnh, mỗi chuỗi do một người viết
 ```
 
-## Việc còn lại: tải bản v2 cho Task 1–2
+## Bản mở rộng cho Task 1–2 (08/2022–10/2026)
 
-Máy đóng gói không kết nối được tới Open-Meteo, nên gói chưa có file `hanoi_hourly_2023_2025_v2.csv`. Tải file zip lên Google Colab rồi chạy (không cần API key, mất khoảng một phút):
-
-```
-!unzip -q FinalDeepData_hoan_chinh.zip
-!python FinalDeepData/task1_2/download_openmeteo.py
-```
-
-- Script tải 6 lượt (3 năm × 2 nguồn), lưu số liệu gốc vào `task1_2/raw/`, rồi tạo `hanoi_hourly_2023_2025_v2.csv` và `columns_units_v2.json`.
-- Nó tự so các cột trùng với file v1 và in "khop" nếu lệch tối đa ≤ 0,05. Nếu in "KHAC", báo lại cả nhóm trước khi dùng.
-- Biến thêm so với v1:
+`task1_2/hanoi_hourly_2022_2026_v2.csv` có 37.272 giờ, từ 01/08/2022 đến 31/10/2026, giờ Việt Nam (GMT+7), cùng hai điểm lưới như v1.
+- **Số liệu ô nhiễm có từ 7 giờ ngày 4/8/2022.** 79 giờ đầu trống số liệu ô nhiễm, vì CAMS chưa có số; bỏ các giờ này trước khi dùng.
+- **Biến thêm so với v1:**
   - khí tượng: `dew_point_2m`, `cloud_cover`, `wind_direction_10m` (hướng gió), `wind_gusts_10m`, `shortwave_radiation`;
   - không khí: `carbon_monoxide`, `sulphur_dioxide`, `ozone`, `dust`, `aerosol_optical_depth`.
-- Tên biến lấy theo trang tài liệu Open-Meteo, nhưng script chưa được chạy với API thật. Nếu API báo lỗi một tên biến, xoá biến đó khỏi danh sách `WEATHER` hoặc `AIR` ở đầu script rồi chạy lại.
-- Phần gộp, kiểm tra và chia tập của script đã được thử trên số liệu gốc của nhóm: chính file v1 trong gói được tạo bằng lệnh `--offline` của script này.
-- Có file v2 rồi thì chỉ cần đổi tên file trong đoạn code đọc dữ liệu bên dưới. Riêng hướng gió là góc 0–360°, nên đổi sang sin/cos trước khi đưa vào mô hình (359° và 1° thực ra rất gần nhau):
+- **Khớp với v1:** ở những giờ trùng nhau (2023–2025), 9 cột chung khớp hoàn toàn với `hanoi_hourly_2023_2025_v1.csv`.
+- **Cột `split`** do script ghi theo mốc cũ: 2026 bị tính vào test. Notebook `02_task1_model.ipynb` tự chia lại tập, và tách riêng 01–10/2026 để kiểm tra thêm.
 
-```python
-import numpy as np
-df = load_hourly("FinalDeepData/task1_2/hanoi_hourly_2023_2025_v2.csv")   # load_hourly: xem mục Task 1–2
-rad = np.deg2rad(df.pop("wind_direction_10m"))
-df["wind_dir_sin"], df["wind_dir_cos"] = np.sin(rad), np.cos(rad)
+Tải lại (cần Internet, không cần API key):
+
 ```
+python FinalDeepData/task1_2/download_2022_2026.py
+```
+
+**Lưu ý về `download_openmeteo.py`:** khi tải khí tượng, script này không chỉ định mô hình ERA5 và độ cao.
+- Thiếu `models=era5`, Open-Meteo trả về mô hình mặc định ở một điểm lưới khác (20,98 B; 105,79 Đ). Khi đó nhiệt độ lệch tới 8 °C và gió lệch tới 26 km/h so với v1, và script sẽ in "KHAC".
+- Thiếu `elevation=19`, nhiệt độ và áp suất còn lệch nhẹ.
+- `download_2022_2026.py` gọi lại chính script này nhưng thêm hai tham số trên, nên số liệu khớp với v1.
+
+Hướng gió là góc 0–360°, nên đổi sang hai thành phần u, v (hoặc sin, cos) trước khi đưa vào mô hình, vì 359° và 1° thực ra rất gần nhau.
 
 ## Task 1–2: chuỗi thời gian Hà Nội
 
@@ -107,20 +111,43 @@ Mẫu có nhãn nằm vắt qua hai tập (ngay chỗ giáp ranh) bị bỏ. Đ�
 
 ## Task 3: ảnh chuỗi chữ số viết tay
 
-| | v1 (của nhóm, giữ nguyên) | v2 (mới) |
-| --- | --- | --- |
-| Số ảnh train / validation / test | 20.000 / 2.000 / 2.000 | 20.000 / 2.000 / 2.000 |
-| Kích thước | cao 32, rộng 80–253 pixel | cao 32, rộng 35–254 pixel |
-| Khoảng cách chữ số | luôn tách rời (viền đen sẵn của MNIST + khe 0–5 pixel) | cắt sát, khe −3 đến +6 pixel: có lúc chạm hoặc chồng nhẹ |
-| Biến dạng | xoay ±6°, cỡ 24–28 pixel | xoay ±10°, nghiêng ±0,35, đổi độ dày nét, cao 18–28 pixel, mờ nhẹ, đổi độ sáng |
-| Bề rộng ảnh theo độ dài | gần như tách hẳn (3 chữ số: 80–102 pixel; 8 chữ số: 213–253 pixel) | chồng lấn nhiều (3 chữ số: 35–117; 8 chữ số: 107–254) |
+**Dùng bộ v3.** Ở v1 và v2, mỗi chữ số được lấy từ một ảnh MNIST bất kỳ, nên một chuỗi là chữ của nhiều người: `check_writers.py` chạy lại hai script cũ với đúng seed và cho thấy 0/24.000 ảnh của mỗi bản có mọi chữ số cùng một người viết (trung bình 5,5 người viết mỗi ảnh). Chuỗi số viết tay thật luôn do một người viết, nên theo góp ý của giảng viên nhóm sinh lại bộ v3.
 
-Giống nhau ở cả hai bản:
+| | v1 (của nhóm, giữ nguyên) | v2 | **v3 (bộ chính)** |
+| --- | --- | --- | --- |
+| Người viết trong một chuỗi | nhiều người (mỗi chữ số một ảnh MNIST bất kỳ) | nhiều người | **một người** (mã người viết theo QMNIST) |
+| Số ảnh train / validation / test | 20.000 / 2.000 / 2.000 | 20.000 / 2.000 / 2.000 | 20.000 / 2.000 / 2.000 (thêm bộ 60.000 ảnh train) |
+| Kích thước | cao 32, rộng 80–253 pixel | cao 32, rộng 35–254 pixel | cao 32, rộng 28–256 pixel |
+| Khoảng cách chữ số | luôn tách rời (viền đen sẵn của MNIST + khe 0–5 pixel) | cắt sát, khe −3 đến +6 pixel: có lúc chạm hoặc chồng nhẹ | như v2, nhưng mỗi người viết có khoảng cách quen tay riêng |
+| Biến dạng | xoay ±6°, cỡ 24–28 pixel | từng chữ số xoay ±10°, nghiêng ±0,35, đổi độ dày nét, cao 18–28 pixel; cả ảnh mờ nhẹ, đổi độ sáng | cùng các phép biến đổi và cùng giới hạn như v2, nhưng cỡ chữ, góc xoay, độ nghiêng, độ dày nét chọn **một lần cho cả chuỗi**, từng chữ số chỉ dao động nhẹ |
+| Chia train / validation | theo ảnh MNIST: 48.000 / 12.000 ảnh MNIST-train | như v1 | **theo người viết**: 431 / 108 người viết của MNIST-train |
+| Bề rộng ảnh theo độ dài | gần như tách hẳn (3 chữ số: 80–102 pixel; 8 chữ số: 213–253 pixel) | chồng lấn nhiều (3 chữ số: 35–117; 8 chữ số: 107–254) | chồng lấn nhiều hơn (3 chữ số: 28–147; 8 chữ số: 79–256) |
+
+**Mã người viết.** MNIST không cho biết ai viết chữ số nào. Bộ QMNIST (Yadav & Bottou, 2019) đã truy từng ảnh MNIST về tờ mẫu gốc trong NIST Special Database 19 và công bố mã người viết trong file nhãn mở rộng (cột 2). Ảnh QMNIST-train khớp từng ảnh, đúng thứ tự với MNIST-train; 10.000 ảnh đầu của QMNIST-test khớp với MNIST-test. `generate_data_v3.py` tự tải hai file nhãn này vào `data/raw/` (khoảng 1 MB), kiểm tra mã MD5 và kiểm tra nhãn chữ số khớp MNIST trước khi dùng. Mã từ 2100 trở lên là học sinh trung học, nhỏ hơn 2100 là nhân viên Cục Điều tra Dân số Mỹ.
+
+**Cách v3 sinh một ảnh:**
+1. Chọn độ dài 3–8 và các chữ số ngẫu nhiên đều như v1, v2, nên nhãn không phụ thuộc người viết.
+2. Chọn ngẫu nhiên một người viết trong số những người có đủ mẫu cho các chữ số đó. Chữ số lặp lại (ví dụ hai chữ 7) lấy hai mẫu khác nhau của cùng người.
+3. Chọn kiểu chữ cho cả chuỗi, biến đổi từng chữ số, cắt sát nét rồi ghép thành hàng như v2. Chuỗi nào rộng quá 256 pixel thì thu nhỏ cả ảnh cho vừa (56/20.000 ảnh train).
+
+**Chia tập của v3 theo người viết.** MNIST vốn đã tách người viết giữa MNIST-train và MNIST-test. v3 chia tiếp người viết của MNIST-train: 20% số người viết (chọn ngẫu nhiên trong từng nhóm tờ mẫu của NIST) chỉ dùng cho validation.
+
+| Tập | Số ảnh | Người viết | Ảnh MNIST nguồn |
+| --- | --- | --- | --- |
+| Train | 20.000 | 431 người viết của MNIST-train | 47.790 ảnh |
+| Validation | 2.000 | 108 người viết khác của MNIST-train | 12.210 ảnh |
+| Test | 2.000 | 276 trong 297 người viết của MNIST-test | 10.000 ảnh |
+
+Không người viết nào xuất hiện ở hai tập, nên validation và test đều là chữ của người mà mô hình chưa gặp khi huấn luyện. Mỗi học sinh trong MNIST-test chỉ viết khoảng 20 chữ số, còn mỗi nhân viên khoảng 100, nên chuỗi test dài thường lấy từ nhân viên hơn (tỷ lệ ảnh của học sinh: 81% ở chuỗi 3 chữ số, 53% ở chuỗi 8 chữ số).
+
+File nhãn của v3 có thêm hai cột: `writer` (mã người viết của cả chuỗi) và `source` (chỉ số các ảnh MNIST đã ghép, từ trái sang phải; train và validation lấy từ MNIST-train, test lấy từ MNIST-test).
+
+Giống nhau ở cả ba bản:
 - Chữ trắng trên nền đen, độ dài chuỗi 3–8, 10 chữ số xuất hiện đều nhau.
 - Khoảng 10% nhãn bắt đầu bằng số 0.
-- Chia nguồn MNIST giống hệt nhau: ảnh train chỉ dùng chữ số từ 48.000 ảnh MNIST-train, validation dùng 12.000 ảnh còn lại, test dùng MNIST-test. Không chữ số nào xuất hiện ở hai tập.
+- Không ảnh MNIST nào được dùng ở hai tập.
 
-**Gợi ý dùng:** train trên v1 trước cho mô hình chạy được, rồi train trên v2 (hoặc gộp v1 + v2). Nếu nhóm định thử trên ảnh chữ viết tay thật thì nên dùng mô hình đã train trên v2, vì v2 giống chữ viết thật hơn.
+**Gợi ý dùng:** huấn luyện và đánh giá trên v3. Bộ v2 chỉ dùng để so sánh với cách ghép cũ.
 
 **Ba điều bắt buộc khi đọc:**
 1. Nhãn phải đọc dạng chuỗi: `pd.read_csv(..., dtype={"label": str})`. Đọc thiếu tham số này thì 2.038 nhãn train của v1 mất số 0 ở đầu.
@@ -133,13 +160,13 @@ Giống nhau ở cả hai bản:
 from data_utils import load_task3, encode_labels, decode_tokens, augment
 import numpy as np
 
-X, labels = load_task3("FinalDeepData/task3/data/mnist_sequences_v2", "train")  # (20000, 32, 256) uint8
+X, labels = load_task3("FinalDeepData/task3/data/mnist_sequences_v3", "train")  # (20000, 32, 256) uint8
 dec_in, dec_out = encode_labels(labels, max_len=8)   # teacher forcing: <bos> d1..dn / d1..dn <eos>
 X_aug = augment(X[:64], np.random.default_rng(0))   # nhiễu + độ sáng, dùng khi huấn luyện
 decode_tokens([2, 0, 3, 6, 9, 12])                   # -> "20369"
 ```
 
-Sinh lại hoặc sinh bộ lớn hơn (chạy trong thư mục `task3`, khoảng 1 phút cho mỗi 24.000 ảnh): `python generate_data_v2.py --out data/mnist_sequences_v2_big --train 60000`. Seed và tham số nằm trong `generation_config.json`.
+Sinh lại hoặc sinh bộ lớn hơn (chạy trong thư mục `task3`, khoảng 20 giây cho mỗi 24.000 ảnh): `python generate_data_v3.py` (bộ chính) và `python generate_data_v3.py --out data/mnist_sequences_v3_big --train 60000` (60.000 ảnh train; 20.000 ảnh train đầu, validation và test trùng v3). Seed, tham số, số người viết và phiên bản thư viện nằm trong `generation_config.json`. Ảnh chỉ trùng từng pixel khi sinh bằng cùng phiên bản Pillow; bộ trong gói được sinh bằng NumPy 2.5 và Pillow 13.
 
 ## Tính chỉ số
 
@@ -165,6 +192,13 @@ Không dùng `sklearn.metrics.r2_score` cho cột R²: hàm đó tính 1 − SSE
   - Nguồn train và validation không trùng nhau.
   - Xem trực tiếp ảnh mẫu, nhãn khớp hình.
 - **Task 3 v2:** đủ 24.000 ảnh, cao 32, rộng không quá 256, không ảnh trống, nhãn khớp cột độ dài, xem trực tiếp ảnh mẫu.
+- **Mã người viết:** nhãn chữ số của QMNIST trùng MNIST ở cả 60.000 ảnh train và 10.000 ảnh test; khoảng cách giữa ảnh MNIST và ảnh QMNIST cùng chỉ số rất nhỏ (L2 trung vị 8,7 trên thang 0–255, so với khoảng 2.200 giữa hai ảnh khác nhau cùng chữ số), đúng như README của QMNIST.
+- **Task 3 v3** (`check_writers.py`):
+  - cả 24.000 ảnh (và 64.000 ảnh của bộ lớn) có mọi chữ số cùng một người viết, đúng bằng cột `writer`;
+  - ảnh MNIST nguồn đúng chữ số của nhãn, không ảnh nguồn nào dùng hai lần trong cùng một ảnh;
+  - không người viết nào xuất hiện ở hai tập;
+  - 20.000 ảnh train đầu, validation và test của bộ lớn trùng từng pixel với v3.
+- **v1, v2 chạy lại** (`check_writers.py`): nhãn và từng pixel của cả 48.000 ảnh trùng bản gốc (với Pillow 10.4); 0 ảnh có mọi chữ số cùng một người viết.
 - **`data_utils` và `metrics`:**
   - Căn chỉnh cửa sổ đúng trên 200 mẫu ngẫu nhiên; mã hoá rồi giải mã lại nhãn đúng; phần đệm ảnh toàn số 0.
   - `metrics.nse` cho cùng kết quả với `sklearn.metrics.r2_score`, còn `metrics.r2` thì khác, đúng như mong đợi.
@@ -173,4 +207,6 @@ Không dùng `sklearn.metrics.r2_score` cho cột R²: hàm đó tính 1 − SSE
 
 - Open-Meteo, Historical Weather API và Air Quality API. Trang tài liệu yêu cầu ghi nguồn Open-Meteo và nhà cung cấp dữ liệu CAMS.
 - MNIST: LeCun, Y., Bottou, L., Bengio, Y., Haffner, P. (1998). Gradient-based learning applied to document recognition. *Proceedings of the IEEE*, 86(11).
+- QMNIST (mã người viết): Yadav, C., Bottou, L. (2019). Cold case: the lost MNIST digits. *Advances in Neural Information Processing Systems 32*. https://github.com/facebookresearch/qmnist (giấy phép BSD).
 - Bộ v2 sinh bằng `task3/generate_data_v2.py` với seed 2027 (train), 2028 (validation), 2029 (test).
+- Bộ v3 sinh bằng `task3/generate_data_v3.py` với seed 2030 (chia người viết), 2031 (train), 2032 (validation), 2033 (test).

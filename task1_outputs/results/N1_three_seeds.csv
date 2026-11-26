@@ -1,0 +1,3 @@
+cấu hình,RMSE validation TB,độ lệch chuẩn
+"GRU + Attention học phần thay đổi, F15, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1",9.20112764772817,0.14096586975876477
+"GRU + Attention học phần thay đổi, F9, cửa sổ 48 giờ, 64 unit, 1 lớp, bộ v1",9.25960346696623,0.03653331429738896

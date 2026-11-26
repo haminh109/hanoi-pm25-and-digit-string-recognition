@@ -11,3 +11,9 @@ FinalDeepData/task3/data/
 *.weights.h5
 checkpoints/
 *.zip
+
+# Mô hình cũ học trên dữ liệu ghép nhiều người viết (v1, v2): chỉ giữ trên máy
+task3_outputs/models/old_v1_v2/
+
+# Số liệu gốc của bản mở rộng Task 1–2: tải lại bằng FinalDeepData/task1_2/download_2022_2026.py
+FinalDeepData/task1_2/raw_2022_2026/

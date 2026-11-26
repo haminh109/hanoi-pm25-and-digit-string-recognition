@@ -1,0 +1,13 @@
+so sánh,chỉ số,chênh lệch,khoảng tin cậy 95%,khác 0 rõ ràng?
+LSTM + Attention so với Giữ nguyên (persistence),RMSE,-4.264633166885371,-4.957 đến -3.568,có
+LSTM + Attention so với Giữ nguyên (persistence),MAE,-2.654457283164687,-3.095 đến -2.231,có
+LSTM + Attention so với Giữ nguyên (persistence),NSE,0.11100469773441501,+0.091 đến +0.133,có
+LSTM + Attention so với Hồi quy tuyến tính,RMSE,0.668513081754055,+0.053 đến +1.270,có
+LSTM + Attention so với Hồi quy tuyến tính,MAE,0.3816680102014578,+0.064 đến +0.706,có
+LSTM + Attention so với Hồi quy tuyến tính,NSE,-0.014203009609192851,-0.027 đến -0.001,có
+LSTM + Attention so với LSTM,RMSE,0.0007614916620664047,-0.369 đến +0.360,chưa chắc
+LSTM + Attention so với LSTM,MAE,-0.14141758314589392,-0.334 đến +0.048,chưa chắc
+LSTM + Attention so với LSTM,NSE,-1.6671460244865877e-05,-0.008 đến +0.008,chưa chắc
+LSTM + Attention so với GRU,RMSE,0.1301326690914415,-0.258 đến +0.522,chưa chắc
+LSTM + Attention so với GRU,MAE,0.08263399757680645,-0.134 đến +0.298,chưa chắc
+LSTM + Attention so với GRU,NSE,-0.0028326910141648343,-0.011 đến +0.006,chưa chắc
