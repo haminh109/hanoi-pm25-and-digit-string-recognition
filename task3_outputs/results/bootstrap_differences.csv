@@ -1,0 +1,11 @@
+so sánh,chỉ số,số ảnh,chênh lệch (điểm %),khoảng tin cậy 95% (điểm %),khác 0 rõ ràng?,số ảnh chỉ A đúng,số ảnh chỉ B đúng
+Beam search k = 3 so với greedy,đọc đúng cả chuỗi,2000,0.15000000000000568,+0.00 đến +0.35,chưa chắc,3,0
+Mô hình chính so với bỏ attention,đọc đúng cả chuỗi,2000,0.7999999999999896,-0.25 đến +1.85,chưa chắc,63,47
+"Mô hình chính so với bỏ attention, chỉ chuỗi 8 chữ số",đọc đúng cả chuỗi,357,4.761904761904756,+1.68 đến +7.84,có,24,7
+Mô hình chính so với bỏ BiLSTM,đọc đúng cả chuỗi,2000,14.59999999999999,+12.70 đến +16.40,có,336,44
+Mô hình chính so với nhiều đầu softmax,đọc đúng cả chuỗi,2000,17.349999999999998,+15.45 đến +19.15,có,385,38
+Gộp 3 seed so với seed 42,đọc đúng cả chuỗi,2000,1.2500000000000067,+0.55 đến +1.95,có,38,13
+60.000 ảnh train so với 20.000 ảnh,đọc đúng cả chuỗi,2000,2.550000000000008,+1.60 đến +3.55,có,71,20
+Tăng cường mạnh hơn so với tăng cường cũ,đọc đúng cả chuỗi,2000,0.9500000000000064,-0.05 đến +2.00,chưa chắc,60,41
+Học trên v3 so với học trên v2 (cùng test v3),đọc đúng cả chuỗi,2000,0.39999999999998925,-0.70 đến +1.45,chưa chắc,66,58
+Học trên v3 so với học trên v2 (cùng test v3),đúng độ dài,2000,0.8499999999999952,+0.40 đến +1.35,có,20,3

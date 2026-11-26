@@ -9,7 +9,7 @@ import pandas as pd
 from keras import layers, ops
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--data", default="v2", choices=["v2", "v2_big", "v1"])
+parser.add_argument("--data", default="v3", choices=["v3", "v3_big", "v2"])  # v3: mỗi chuỗi do một người viết
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--epochs", type=int, default=30)
 args = parser.parse_args()
@@ -21,13 +21,13 @@ import metrics
 from data_utils import BOS, PAD, VOCAB_SIZE, augment, decode_tokens, encode_labels, load_task3
 data_dir = root / "FinalDeepData" / "task3" / "data"
 train_dir = data_dir / f"mnist_sequences_{args.data}"
-eval_dir = data_dir / f"mnist_sequences_{args.data.replace('_big', '')}"  # v2_big: validation, test của v2
+eval_dir = data_dir / f"mnist_sequences_{args.data.replace('_big', '')}"  # v3_big: validation, test của v3
 save_path = root / "checkpoints" / f"task3_model_{args.data}_seed{args.seed}"
 
 # 1. Load the dataset
-if args.data == "v2_big" and not train_dir.exists():  # sinh 60.000 ảnh train bằng script của nhóm (vài phút)
-    subprocess.run([sys.executable, str(data_dir.parent / "generate_data_v2.py"), "--out", str(train_dir),
-                    "--train", "60000"], check=True)
+for folder, n in [(eval_dir, "20000"), (train_dir, "60000")]:  # chưa có bộ v3: sinh bằng script của nhóm
+    if folder.name.startswith("mnist_sequences_v3") and not folder.exists():
+        subprocess.run([sys.executable, data_dir.parent / "generate_data_v3.py", "--out", folder, "--train", n], check=True)
 X_train, y_train = load_task3(train_dir, "train")  # ảnh uint8 (N, 32, 256), nhãn là chuỗi chữ số
 X_val, y_val = load_task3(eval_dir, "validation")
 X_test, y_test = load_task3(eval_dir, "test")
